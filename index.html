@@ -3,18 +3,39 @@
   <head>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> 
+    
   </head>
   <body>
-    <section>
-      Hello WWW!
-    </section>
 
-    <div class="about">
+    <form>
+      <label for="lang-switch">
+          <span lang="en" style="padding-right: 5px; padding-left: 10px; color:#FFFFFF;">Language</span>
+          <span lang="de" style="padding-right: 5px; padding-left: 10px; color:#FFFFFF;">Sprache</span>
+      </label>
+      <select id="lang-switch">
+          <option value="en" selected>English</option>
+          <option value="de">Deutsch</option>
+      </select>
+    </form>
+
+    <div class="about" lang="en">
       Weclome to my personal portfolio website, on which I showcase some of my works.
       <br>
       My name is <b>Oliver Steiner</b> and I'm currently studying Computer Science at the Technical University of Berlin.
       <br>
-      My main programming languages consist of:  C, C++ and Python
+      My main programming languages consist of:  C, C++ and Python.
+      <br>
+      I am currently in the process of learning Zig.
+    </div>
+
+    <div class="about" lang="de">
+      Willkommen auf meiner persönlichen Portfolio-Website. Hier stelle ich einige meiner Werke vor.
+      <br>
+      Mein Name ist <b>Oliver Steiner</b> und ich studiere derzeit Informatik an der Technischen Universität Berlin.
+      <br>
+      Meine Hauptprogrammiersprachen sind: C, C++ und Python.
+      <br>
+      Aktuell lerne ich noch Zig.
     </div>
     
     <br>
@@ -24,5 +45,27 @@
       <span style="padding-left: 10px;"></span>
       <a style="text-decoration:none;color:#FFFFFF;" href="https://github.com/Ollilauch"> <i class="fa-brands fa-github"></i></a>
     </div>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script>
+    $('[lang]').hide(); // hide all lang attributes on start.
+    $('[lang="en"]').show(); // show just Korean text (you can change it)
+    $('#lang-switch').change(function () { // put onchange event when user select option from select
+        var lang = $(this).val(); // decide which language to display using switch case. The rest is obvious (i think)
+        switch (lang) {
+            case 'en':
+                $('[lang]').hide();
+                $('[lang="en"]').show();
+            break;
+            case 'de':
+                $('[lang]').hide();
+                $('[lang="de"]').show();
+            break;
+            default:
+                $('[lang]').hide();
+                $('[lang="en"]').show();
+            }
+    });
+    </script>
   </body>
 </html>
